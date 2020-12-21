@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+	<html> 
+		<head>
+			<title>Books Plus</title>
+		</head>
+		<body>
+			<header>
+				<ul id='nav'>
+					<li class='nav'><a class='nav' href='/search'>Search</a></li>
+					<li class='nav'><a class='nav' href='/login'>Login</a></li>
+					<li class='nav'><a class='nav' href='/register'>Register</a></li>
+					<li class='nav'><a class='nav' href='/logout'>Logout</a></li>
+					<li class='nav' id='navtitle'>Books Plus +</li>
+				</ul>
+			</header>
+			<h1>{% block heading %}{% endblock %}</h1>
+			{% block body %}
+
+			{% if message %}
+				<div>{{ message }}</div>
+			{% endif %}
+
+			{% endblock%}
+
+			<style type="text/css">
+				#nav {
+				    list-style-type: none;
+				    margin: -8px;
+				    padding: 0;
+				    overflow: hidden;
+				    background-color: #17ade8;
+				}
+				  
+				.nav {
+				    float: left;
+				    display: block;
+				    color: white;
+				    text-align: center;
+				    padding: 14px 16px;
+				    text-decoration: none;
+				    font-size: 20px;
+				}
+				  
+				.nav:hover:not(.active) {
+				    background-color: #145cba;
+				}
+				  
+				.active {
+				    background-color: #4CAF50;
+				}
+
+				#navtitle {
+				    float: right;
+				    position: relative;
+				    top: 11px;
+				    right: 20px;
+				    font-size: 25px;
+				}
+
+				#navtitle:hover:not(.active) {
+					background-color: #17ade8;
+				}
+			</style>
+
+		</body>
+	</html>

@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Book Results
+{% endblock %}
+
+{% block body %}
+
+	{% if books %}
+
+		<br>
+		<center>
+			<h1>Search Results</h1>
+			<br>
+			<table>
+
+				<thead>
+					<tr>
+						<td class="titles"><a>Title</a></td>
+						<td class="titles">Author</td>
+						<td class="titles">Isbn</td>
+						<td class="titles">Year</td>
+					</tr>
+				</thead>
+
+				{% for book in books %}
+					<tr>
+						<td>{{ book.title }}</td>
+						<td>{{ book.author }}</td>
+						<td><a href="/book/{{book.isbn}}">{{ book.isbn }}</a></td>
+						<td>{{ book.year }}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</center>
+	{% else %}
+
+	<h1>No Results</h1>
+
+	{% endif %}
+
+	<style type="text/css">
+
+		table, td {
+		 	border: 1px solid darkblue;
+		}
+
+		table {
+		 	width: 80%;
+			border-collapse: collapse;
+		}
+
+		.titles {
+			font-size: 20px;
+			font-style: bold;
+		}
+
+	</style>
+
+{% endblock %}

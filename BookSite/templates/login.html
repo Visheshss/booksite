@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block body %}
+
+<br>
+<center>
+	<h1>Login</h1>
+	<form action="{{ url_for('login') }}" method="post">	
+		<input type="text" name="username">
+		<br><br>
+		<input type="password" name="password">
+		<br><br>
+		<button>Login</button>
+	</form>
+</center>
+
+<style type="text/css">
+	input {
+			height: 30px;
+			width: 300px;
+			outline-color: #17ade8;
+			border-radius: 5px;
+			font-size: 18px;
+	}
+
+	button {
+		  background-color: white; 
+		  color: black; 
+		  border: 2px solid #17ade8;
+		  border-radius: 5px;
+		  height: 40px;
+		  width: 100px;
+	}	
+</style>
+
+{% endblock %}

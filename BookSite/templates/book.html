@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Book
+{% endblock %}
+
+{% block body %}
+
+	<h1>{{ book.title }}</h1>
+	<h2 class='details' id='author'>By {{ book.author }}</h2>
+	<h3 class='details'>Published {{ book.year }}</h3>
+	<h3 class='details'>Isbn: {{ book.isbn }}</h3>
+
+	{% if message %}
+		<h5>{{message}}</h5>
+	{% endif %}
+
+	<h3>Leave a review!</h3>
+
+	<form action="/book/{{book.isbn}}", method="post">
+		<input type="text" name="comment" size="width = 50px, height = 20px">
+		<br><br>
+		<select name="rating">
+			<option disabled="">Star Rating</option>
+			<option value="1">1 Star</option>
+			<option value="2">2 Stars</option>
+			<option value="3">3 Stars</option>
+			<option value="4">4 Stars</option>
+			<option value="5">5 Stars</option>
+		</select>
+		<button>Submit</button>
+	</form>			
+	<br>
+	{% if reviews %}
+
+		<h3>Reviews</h3>
+
+		{% for review in reviews %}
+			<fieldset>
+				<p>{{review.comment}}</p>
+				<h5 class='review' id='rating'>Rating: {{review.rating}} Stars</h5>
+				<h5 class='review'>By {{review.username}}</h5>
+			</fieldset>
+			<br>
+		{% endfor %}
+
+	{% else %}
+
+		<h3>No reviews yet.</h3>
+
+	{% endif %}
+
+	<style type="text/css">
+		.details {
+			position: relative;
+			bottom: 15px;
+			font-size: 15px;
+		}
+
+		#author {
+			position: relative;
+			bottom: 15px;
+			font-size: 20px;
+		}
+
+		input {
+			height: 100px;
+			width: 600px;
+			outline-color: #17ade8;
+			border-radius: 5px;
+			font-size: 18px;
+		}
+
+		select {
+			outline-color: #17ade8;
+			border-radius: 5px;
+			height: 30px;
+		}
+
+		button {
+		  background-color: white; 
+		  color: black; 
+		  border: 2px solid #17ade8;
+		  border-radius: 5px;
+		  height: 30px;
+		}
+
+		button:hover {
+		  background-color: #008CBA;
+		  color: white;
+		}
+
+		fieldset {
+			outline-color: #145cba;
+		}
+
+		.review {
+			position: relative;
+			top: 20px;
+		}
+
+		#rating {
+			top: 35px;
+		}
+
+	</style>
+
+{% endblock %}
